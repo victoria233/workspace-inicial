@@ -198,37 +198,20 @@ a.custom-card:hover {
 /* texto de inicio */
 .iniciosesion {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bolder;
   font-size: 25px;
   margin-top: 25px;
-}
-
-/* formato para ambos campos y texto fuera del placeholder */
-.campoemail, .campocontrasenia {
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(26, 21, 21);
-  margin: -5px;
-  margin-top: 5px;
-  font-size: 15px;
+  color: black;
 }
 
 ::placeholder {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 8px 10px;
-  border-color: rgb(255, 144, 0);
+  /* border-color: rgb(255, 144, 0); */
   color: rgb(108, 117, 125);
 }
 
-/* texto dentro del placeholder */
-.ingresaremail, .ingresarcontrasenia {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
-  border-radius: 10x;
-  margin: 10px;
-}
-
-/* color del borde de los campos del placeholder */
+/* color BASE del borde de ambos campos del placeholder */
 input:placeholder-shown {
   border-color: rgb(206, 212, 218);
   border-style: solid;

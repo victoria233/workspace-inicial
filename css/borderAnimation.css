@@ -1,0 +1,48 @@
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.box h3 {
+    color: rgb(127, 4, 184);
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+}
+.box::after{
+    content: "";
+    position: absolute;
+    background: rgb(255, 255, 255);
+    inset: 4px;
+}
+.box::before{
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 140%;
+    background: linear-gradient(#38ed28, #d400d4);
+    animation: animate 4s linear infinite;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.prueba {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 140%;
+    background: linear-gradient(#38ed28, #d400d4);
+    animation: animate 4s linear infinite;
+}

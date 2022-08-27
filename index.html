@@ -11,6 +11,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <script src="login.js" type="text/javascript"></script>
   <link rel="icon" href="img/favicon.png">
+  <link rel="stylesheet" href="css/floatingLabelTextInput.css">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -21,21 +22,39 @@
 <body>
   <main class="mt-5">
     <div style="text-align:center;" class="container">
-      <!-- se agrega login -->
+      <!-- login nuevo con floatingLabelTextInput -->
       <img class="logo" src="img/login.png" alt="login img">
       <br/>
           <p class="iniciosesion">Inicio de sesión</p>
-  
-          <!-- formulario -->
-          
-          <p class="campoemail">Email o Username<strong style="color: red;"> *</strong></p>
-          <input class="ingresaremail" type="email" id="idemail" name="nameemail" placeholder="Email o Username" required></label>
 
-         
-          <p class="campocontrasenia">Contraseña<strong style="color: red;"> *</strong></p>
-          <input class="ingresarcontrasenia" type="password" id="idcontrasenia" name="namecontrasenia" placeholder="Contraseña" required><!-- </label> -->
+          <center><form>
+            <div class="input-container">
+              <input id="idemail"
+                type="email"
+                id="email"
+                class="text-input"
+                autocomplete="email"
+                placeholder="Ingrese su Email o Username"
+                required
+              />
+              <label class="label" for="email">Email</label>
+            </div>
           </br>
-
+            <div class="input-container">
+              <input id="idcontrasenia"
+                type="password"
+                id="passw"
+                class="text-input"
+                autocomplete="off"
+                placeholder="Ingrese su Contraseña"
+                required
+              />
+              <label class="label" for="passw">Contraseña</label>
+            </div>
+          </form></center>
+          <script src="js/floatingLabelTextInput.js"></script>
+  
+          </br>
           <button class="botoningresar" onclick="validateForm()" type="submit">Ingresar</button>
       </div>
     </div>
