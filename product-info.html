@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="img/favicon.png">
   <script src="js/login.js" type="text/javascript"></script>
 </head>
 
@@ -39,9 +40,37 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <!-- muestra el titulo del producto especifico -->
+    <div class="text-xxl-start p-4" id="nombre-producto">
+    </div>
+    <div class="container" >
+    <!-- La info del producto -->
+    <section class="row" id="detalles-producto"></section>
+    <!-- para los comentarios -->
+      <div>
+        <div>
+          <h3>Comentarios</h3>
+        </div>
+        <ul id="extraerComentarios"></ul> <!-- ul = unordered list -->
+        <div>
+          <h3>Comentar</h3>
+        </div>
+        <div>
+          <p>Tu opinión:</p>
+          <textarea style="width: 40%"></textarea>
+        </div>
+        <div>
+          <p>Tu puntuación:</p>
+          <select style="width: 10%" name="puntaje"> <!-- falta agregar a js -->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <button class="botoningresar" id="enviarComentario">Enviar</button> <!-- agregar a js id="enviarComentario" -->
+        </div>
       </div>
     </div>
   </main>

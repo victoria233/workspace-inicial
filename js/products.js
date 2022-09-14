@@ -1,7 +1,12 @@
 // se crea una variable vacia para guardar el json obtenido por el servidor
 let currentProductsArray = [];
-let categoryName = null;
-/* se crea un let vacio para categoryName */
+let categoryName = null;  /* se crea un let vacio para categoryName */
+
+/* funcion para rederigir a la pag. con el id especifico a product-info */
+function windowReplace(id){
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
 
 /* Esta es la funcionalidad para los 3 botones de los filtros */
 /* funcionalidades de orden asc y desc en función del precio (Cost) y desc en función de la relevancia (la cantidad de artículos vendidos = soldCount) */
@@ -59,7 +64,7 @@ function showProductsList(){
         se extrae el siguiente fragmento desde categories.js para utilizarlo y se lo modifica segun se necesite aqui*/
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action cursor-active">
-                <div class="row">
+                <div class="row pb-4 pt-2 px-1 product-card" onclick="windowReplace(${product.id})">
                     <div class="col-3">
                         <img src="${product.image}" class="img-thumbnail">
                     </div>
@@ -104,7 +109,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     /* se crea el let llamado id que se fija el id de la categoria actual de localstorage que se esta solicitando acceder y se la solicita en el json (catID) en getjsondata
     con el identificador agregado dentro de la url para obtener cada ID. Then (luego) de esto la funcion siguiente se ejecutará mostrando lo demás */
     let id = localStorage.catID;
-    getJSONData("https://japceibal.github.io/emercado-api/cats_products/"+id+".json").then(function(resultObj){
+    if(id){
+        getJSONData("https://japceibal.github.io/emercado-api/cats_products/"+id+".json").then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductsArray = resultObj.data;
             categoryName = currentProductsArray.catName;
@@ -112,6 +118,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             showProductsList()
         }
     });
+        }
+    }); 
+
     /* Para los filtros:
     Se extrae el siguiente fragmento desde categories.js - Y se cambia los nombres Categories por Products
     También se cambia según lo solicitado para el filtro proveniente de la key correspondiente en el json: 
@@ -162,4 +171,3 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProductsList();
     });
-});
