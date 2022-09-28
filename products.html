@@ -31,9 +31,15 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" id="nav-localUser" href="index.html" role="button" style="color: white;">Username</a>
-          </li>
+          <!-- se agrega el menú desplegable -->
+       <div class="dropdown">
+        <a class="btn btn-primary dropdown-toggle" type="button" class="nav-link" id="nav-localUser" id="dropdownMenuButton1" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i>localUser</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+          <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+        </div>
+      </div>
         </ul>
       </div>
     </div>

@@ -57,6 +57,26 @@ function comentariosProducto(){
     }
 }
 
+/* funcion que muestra los productos relacionados (RelatedProduct) */
+function showRelatedProducts() {
+
+    let htmlContentToAppend = "";
+    for (let i = 0; i < product.relatedProducts.length; i++) {
+      let relatedProduct = product.relatedProducts[i];
+
+      htmlContentToAppend += `
+                <div class="col-4 cursor-active col-12 col-md-6 col-lg-4 p-4" onclick="windowReplace(${relatedProduct.id})">
+                  <br>
+                  <div>
+                    <img src="${relatedProduct.image}" class="img-thumbnail">
+                  </div>   
+                    <h5>${relatedProduct.name}</h5>
+                </div>
+                  `;
+  
+      document.getElementById("mostrarProductosRelacionados").innerHTML = htmlContentToAppend;
+    }
+  }
 document.addEventListener("DOMContentLoaded", function(e){
     let id = localStorage.productID; //guardar el id del producto
     if(id){
@@ -74,6 +94,19 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
         }
 });
+
+/* obtener productos relacionados (RelatedProduct) */
+document.addEventListener("DOMContentLoaded", ()=> {
+    let id = localStorage.productID;
+    if(id){
+      getJSONData("https://japceibal.github.io/emercado-api/products/"+id+".json").then(function(resultObj){
+          if (resultObj.status==="ok") {
+            product = resultObj.data;
+            showRelatedProducts();
+          }
+        })    
+    } 
+  });
 
 function imprimirImagenProducto(){
     let htmlContentToAppend = "";
