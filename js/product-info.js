@@ -7,6 +7,10 @@ function showProductInfo(){
     /* para obtener el nombre del producto desde el json */
     document.getElementById("nombre-producto").innerHTML = `
         <h3 class="text-center">${product.name}</h3>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-success pull-right">Comprar</button>
+        </div>
         `;
     /* para obtener e imprimir los detalles del producto */
     let htmlContentToAppend = "";
@@ -28,7 +32,6 @@ function showProductInfo(){
 
                         <p><strong>Imágenes ilustrativas</strong></p>
                         <ul class="row p-0" id="imagen-producto"></ul>
-                    </div> 
                 </div>
                 ` 
     document.getElementById("detalles-producto").innerHTML = htmlContentToAppend;
