@@ -229,3 +229,9 @@ input:placeholder-shown {
   padding: 10px 20px;
   margin-top: 25px;
 }
+
+body {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
