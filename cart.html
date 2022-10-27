@@ -92,15 +92,15 @@ input::-webkit-inner-spin-button {
 
         <div class="row mt-2">
           <div>
-            <input type="radio" id="premium" name="tipoenvio" checked>
+            <input type="radio" id="premium" name="tipoenvio" onclick="calcTotal()" value="0.15" checked>
             <label for="premium">Premium 2 a 5 días (15%)</label>
           </div>
           <div>
-            <input type="radio" id="express" name="tipoenvio">
+            <input type="radio" id="express" name="tipoenvio" onclick="calcTotal()" value="0.07">
             <label for="express">Express 5 a 8 días (7%)</label>
           </div>
           <div>
-            <input type="radio" id="standard" name="tipoenvio">
+            <input type="radio" id="standard" name="tipoenvio" onclick="calcTotal()" value="0.05">
             <label for="standard">Standard 12 a 15 días (5%)</label>
           </div>
         </div>
@@ -120,6 +120,135 @@ input::-webkit-inner-spin-button {
             <div class="col-5">
               <input name="esquina" id="esquina" type="text" required class="form-control"
                 placeholder="Esquina">
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Sprint 6 - Costos -->
+
+      <div class="row container mt-3 card" style="background-color: rgba(240, 248, 255, 0.836);">
+
+        <h4>Costos</h4>
+
+        <div class="card-header" id="headingCostos">
+          <div class="table-responsive" style="overflow: hidden !important;">
+
+            <table class="table table-striped table-hover table-borderless table-sms">
+                <tr>
+                  <td class="col-8">Subtotal:</td>
+                  <td class="col">
+                    <div class="text-end">
+                      <h6 id="subtotal"></h6>
+                      <span class="text-muted" id="productCostText"></span>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col" id="subtotalUsd"></div>
+                      <div class="col">USD 0</div>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="col-8">Costo de Envío:</td>
+                  <td class="col">
+                    <div class="row">
+                      <div class="col" id="costoEnvioUsd"></div>
+                      <div class="col">USD 0</div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="col-8" style="font-weight:bold;">Total ($):</td>
+                  <td class="col-md-6">
+                    <div class="row">
+                      <div class="col" id="precioTotalUsd" style="font-weight:bold;"></div>
+                      <div class="col" style="font-weight:bold;">USD 0</div>
+                    </div>
+                  </td>
+                </tr>
+            </table>
+
+<!-- Sprint 6 - Modal -->
+
+            <div class="row container mt-3">
+              <h4>Forma de pago</h4>
+              
+              <p class="col-2" id="metodoSeleccionado">No ha seleccionado</p>
+              
+              <button class="col-2 btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#myModal" id="metodoDePago">Seleccionar</button>
+
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Forma de pago</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="credito custom-radio ">
+                        <input id="tarjDeCredito" name="tarjeta" type="radio" class="credito-input">
+                           <label class="credito-label my-1" for="tarjDeCredito">
+                           <span class="tarjDeCredito">Tarjeta de credito</span></label>
+                      </div>
+                  <hr>
+                      <div class="row">
+        
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col-12">Número de tarjeta</div>
+                             <div class="col-12"><input class="form-control" id="numeroTarjeta" type="number" min="0" class="rounded py-1" style="width: 100%;"> </div>
+                          </div>
+                        </div>
+        
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col-12">Código de Seg.</div>
+                             <div class="col-12"><input class="form-control" id="codigoDeSeg" type="number" min="0" style="width: 60%;" class="rounded py-1"></div>
+                          </div>
+                        </div>
+
+                      </div>
+        
+                      <div class="row py-3">
+                        <div class="col-6">
+                          <div class="col-12">Vencimiento</div>
+                           <div class="col-12"><input class="form-control" id="vencimientoDeTarj" type="date" min="0" class="rounded py-1" style="width: 100%;"></div>
+                        </div>
+                      </div>
+        
+                      <div class="credito custom-radio pt-4">
+                        <input id="transfBancaria" name="tarjeta" type="radio" class="credito-input">
+                        <label class="credito-label my-1" for="transfBancaria">
+                          <label class="custom-control-label" for="transfBancaria">Transferencia bancaria</label>
+                      </div>
+
+                      <hr>
+
+                      <div class="row pb-3">
+                        <div class="col-6">
+                          <div class="col-12">Número de cuenta</div>
+                            <div class="col-12"><input class="form-control" id="numDeAcc" type="number" min="0" class="rounded py-1" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
