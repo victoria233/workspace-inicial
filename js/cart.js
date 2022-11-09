@@ -95,12 +95,62 @@ function eliminarProducto(USER_CART) {
     } 
 }
 
+/* calcular los costos */
+/* let showCostoTotal 
+  var envio = document.getElementsByName('tipoenvio'); {
+  for (i = 0; i < envio.length; i++) {
+    if (envio[i].checked) {
+      if (envio[i].value == "premium") {
+        tipoenvio = 0.15;
+      }
+      if (envio[i].value == "express") {
+        tipoenvio = 0.07;
+      }
+      if (envio[i].value == "standard") {
+        tipoenvio = 0.05;
+      }
+    }
+  }
+
+  let costoEnvioUsd = Math.round(precioTotalUsd * tipoenvio)
+  let precioTotalUsd = precioTotalUsd + costoEnvioUsd;
+
+  document.getElementById("costoEnvioUsd").innerHTML = costoEnvioUsd;
+  document.getElementById("precioTotalUsd").innerHTML = precioTotalUsd;
+} */
+
+
+/* deshabilitar los campos de la opcion que no fue seleccionada en el Modal */
+function camposModal() {
+
+  document.getElementById('tarjDeCredito').addEventListener('click', () => {habOpcion = 1;
+    document.getElementById('numeroTarjeta').disabled = false;
+    document.getElementById('codigoDeSeg').disabled = false;
+    document.getElementById('vencimientoDeTarj').disabled = false;
+    document.getElementById('numDeAcc').disabled = true;
+
+    document.getElementById('numDeAcc').value = '';
+  })
+
+  document.getElementById('transfBancaria').addEventListener('click', () => {habOpcion = 2;
+
+    document.getElementById('numeroTarjeta').value = '';
+    document.getElementById('codigoDeSeg').value = '';
+    document.getElementById('vencimientoDeTarj').value = '';
+    document.getElementById('numeroTarjeta').disabled = true;
+    document.getElementById('codigoDeSeg').disabled = true;
+    document.getElementById('vencimientoDeTarj').disabled = true;
+    document.getElementById('numDeAcc').disabled = false;
+  })
+}
 /* para obtener carrito del user 25801 */
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(CARRITO1).then(function (result) {
     if (result.status === "ok") {
       USER_CART = result.data
       showCartUser25801(USER_CART)
+      camposModal()
+      /* showCostoTotal() */
     }
   })
 })
